@@ -1,0 +1,10 @@
+.detail-product{
+	padding: 25px;
+	min-height: 500px;
+}
+
+.detail-product img{
+	width: 250px;
+	
+	padding-bottom: 15px;
+}
