@@ -15,7 +15,7 @@ class Mproduct extends CI_Model
 	public $warna_tersedia;
 	public $kondisi_id;
 	public $berat_product;
-	public $foto_product = "default.png";
+	public $foto_product;
 	public $deskripsi_product;
 	
 	public function rules(){
@@ -85,6 +85,7 @@ class Mproduct extends CI_Model
 		$this->warna_tersedia = $post["warna_tersedia"];
 		$this->kondisi_id = $post["kondisi_id"];
 		$this->berat_product = $post["berat_product"];
+		$this->foto_product = $this->_uploadImage();
 		$this->deskripsi_product = $post["deskripsi_product"];
 		$this->db->insert($this->_table, $this); //simpan ke database. $this yang terakhir adalah mengacu pada data yang akan disimpan ini
 	}
@@ -100,13 +101,55 @@ class Mproduct extends CI_Model
 		$this->warna_tersedia = $post["warna_tersedia"];
 		$this->kondisi_id = $post["kondisi_id"];
 		$this->berat_product = $post["berat_product"];
+
+		if (!empty($_FILES["image"]["name"])) {
+			$this->foto_product = $this->_uploadImage();
+		}else{
+			$this->image = $post["old_image"];
+		}
+
 		$this->deskripsi_product = $post["deskripsi_product"];
 		$this->db->update($this->_table, $this, array('product_id' => $post['id']));
 	}
 
 	public function delete($id)
 	{
+		$this->_deleteImage($id);
 		return $this->db->delete("products", array("product_id" => $id));
+	}
+
+	private function _uploadImage()
+	{
+		$config['upload_path'] = './upload/product/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['file_name'] = $this->product_id;
+		$config['overwrite'] = true;
+		$config['max_size'] = 1024; //1 MB
+
+		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('image')) {
+			return $this->upload->data("file_name");
+		}
+
+		return "default.png";
+	}
+
+	private function _deleteImage($id)
+	{
+		$product = $this->getById($id);
+		
+		if ($product->foto_product != "default.png") {
+				$file_name = explode(".", $product->foto_product[0]);
+				return array_map('unlink', glob(FCPATH."upload/product/$file_name.*"));
+			
+				// Di sana kita mengambil nama file dengan fungsi exlode(). 
+				// Lalu kita cari file berdasarkan nama tersbut dengan fungsi glob() 
+				// Setelah file-file ditemukan, lalu kita gunakan fungsi array_map() 
+				// untuk mengeksekusi fungsi unlink() pada tiap file yang ditemukan. 
+				// Tanda bitang (*) setelah $filename artinya semua ektensi dipilih.
+
+			}	
 	}
 
 }
