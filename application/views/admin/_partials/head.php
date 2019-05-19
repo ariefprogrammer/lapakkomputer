@@ -18,4 +18,6 @@
   <!-- css pribadi -->
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style.css');?>">
 
+  <!-- CSS morris -->
+  <link rel="stylesheet" href="<?php echo base_url('js/morris.css');?>">
   

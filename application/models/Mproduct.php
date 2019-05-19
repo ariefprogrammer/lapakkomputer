@@ -9,6 +9,7 @@ class Mproduct extends CI_Model
 
 	public $product_id;
 	public $nama_product;
+	public $brand_product;
 	public $harga_product;
 	public $minimal_beli;
 	public $qty_product;
@@ -28,10 +29,6 @@ class Mproduct extends CI_Model
 			'label' => 'harga_product',
 			'rules' => 'required'],
 
-			['field' => 'minimal_beli',
-			'label' => 'minimal_beli',
-			'rules' => 'required'],
-
 			['field' => 'qty_product',
 			'label' => 'qty_product',
 			'rules' => 'required'],
@@ -42,10 +39,6 @@ class Mproduct extends CI_Model
 
 			['field' => 'kondisi_id',
 			'label' => 'kondisi_id',
-			'rules' => 'required'],
-
-			['field' => 'berat_product',
-			'label' => 'berat_product',
 			'rules' => 'required'],
 
 			['field'=>'deskripsi_product',
@@ -80,6 +73,7 @@ class Mproduct extends CI_Model
 		//$this->product_id = uniqid(); //products_id buat menjadi unik
 		$this->nama_product = $post["nama_product"]; //isi field name
 		$this->harga_product = $post["harga_product"];
+		$this->brand_product = $post["brand_product"];
 		$this->minimal_beli = $post["minimal_beli"];
 		$this->qty_product = $post["qty_product"];
 		$this->warna_tersedia = $post["warna_tersedia"];
@@ -95,6 +89,7 @@ class Mproduct extends CI_Model
 		$post = $this->input->post();
 		$this->product_id = $post["id"];
 		$this->nama_product = $post["nama_product"];
+		$this->brand_product = $post["brand_product"];
 		$this->harga_product = $post["harga_product"];
 		$this->minimal_beli = $post["minimal_beli"];
 		$this->qty_product = $post["qty_product"];

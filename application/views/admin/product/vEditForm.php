@@ -30,6 +30,15 @@
 							</div>
 
 							<div class="form-group">
+								<label for="name">Brand Name*</label>
+								<input class="form-control <?php echo form_error('name') ? 'is-invalid':'' ?>"
+								 type="text" name="brand_product" value="<?php echo $product->brand_product;?>" />
+								<div class="invalid-feedback">
+									<?php echo form_error('name') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
 								<label for="price">Harga Product*</label>
 								<input class="form-control <?php echo form_error('price') ? 'is-invalid':'' ?>"
 								 type="number" name="harga_product" min="0" placeholder="Harga barang" value="<?php echo $product->harga_product;?>" />
@@ -39,7 +48,7 @@
 							</div>
 
 							<div class="form-group">
-								<label for="price">Minimal Beli*</label>
+								<label for="price">Minimal Beli</label>
 								<input class="form-control <?php echo form_error('minimal') ? 'is-invalid':'' ?>"
 								 type="number" name="minimal_beli" min="0" placeholder="Minimal Beli" value="<?php echo $product->minimal_beli;?>"/>
 								<div class="invalid-feedback">
@@ -82,7 +91,7 @@
 							
 
 							<div class="form-group">
-								<label for="price">Berat Produk*</label>
+								<label for="price">Berat Produk</label>
 								<input class="form-control <?php echo form_error('berat') ? 'is-invalid':'' ?>"
 								 type="number" name="berat_product" min="0" placeholder="Berat Produk (Gr)" value="<?php echo $product->berat_product;?>"/>
 								<div class="invalid-feedback">

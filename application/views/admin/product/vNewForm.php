@@ -29,6 +29,15 @@
 							</div>
 
 							<div class="form-group">
+								<label for="name">Brand Produk*</label>
+								<input class="form-control <?php echo form_error('name') ? 'is-invalid':'' ?>"
+								 type="text" name="brand_product" placeholder="Brand name" />
+								<div class="invalid-feedback">
+									<?php echo form_error('name') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
 								<label for="price">Harga Product*</label>
 								<input class="form-control <?php echo form_error('price') ? 'is-invalid':'' ?>"
 								 type="number" name="harga_product" min="0" placeholder="Harga barang" />
