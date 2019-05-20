@@ -9,8 +9,8 @@
       </li>
 
 
-      <li class="nav-item <?php echo $this->uri->segment(2)== 'transaksi'? 'active': ''?>">
-        <a class="nav-link" href="<?php echo site_url('admin/transaksi');?>">
+      <li class="nav-item <?php echo $this->uri->segment(2)== 'transaksis'? 'active': ''?>">
+        <a class="nav-link" href="<?php echo site_url('admin/transaksis');?>">
           <i class="fas fa-fw fa-archive"></i>
           <span>Transaksi</span></a>
       </li>

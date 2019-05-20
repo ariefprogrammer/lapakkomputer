@@ -37,8 +37,6 @@ class Mpembelian extends CI_Model
 		$this->db->join('pelanggan', 'pembelian.pelanggan_id=pelanggan.pelanggan_id');
 		$query = $this->db->get();
 		return $query->result();
-
-		// return $this->db->get("pembelian")->result();
 	}
 
 

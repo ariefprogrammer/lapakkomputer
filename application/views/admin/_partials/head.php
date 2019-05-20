@@ -19,5 +19,6 @@
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style.css');?>">
 
   <!-- CSS morris -->
-  <link rel="stylesheet" href="<?php echo base_url('js/morris.css');?>">
+  <!-- <link rel="stylesheet" href="<?php echo base_url('js/morris.css');?>"> -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
   

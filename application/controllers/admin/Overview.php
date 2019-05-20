@@ -14,7 +14,7 @@ class Overview extends CI_Controller
 
 	public function index()
 	{
-		$data["data"] = $this->Moverview->data_chart();
+		$data["datas"] = json_encode($this->Moverview->data_chart());
 		$data["jumlahproduk"] = $this->Moverview->getJumlahProduk();
 		$data["jumlahpelanggan"] = $this->Moverview->getJumlahPelanggan();
 		$data["jumlahpembelian"] = $this->Moverview->getJumlahPembelian();

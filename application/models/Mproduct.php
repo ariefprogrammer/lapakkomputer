@@ -18,7 +18,7 @@ class Mproduct extends CI_Model
 	public $berat_product;
 	public $foto_product;
 	public $deskripsi_product;
-	
+	 
 	public function rules(){
 		return[
 			['field' => 'nama_product',
@@ -55,23 +55,18 @@ class Mproduct extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 
-		//return $this->db->get($this->_table)->result();
-		// fungsi ini sama seperti SELECT * FROM products. ingat, _table adalah products
-		// result() berarti == ambil semua data dari hasil query
 	}
 
 	public function getById($id)
 	{
 		return $this->db->get_where($this->_table, ["product_id" => $id])->row();
-		// fungsi ini sama seperti SELECT * FROM products WHERE id_product=$id
-		// funsi row() akan mengambil satu baris data dari hasil query
 	} 
 
 	public function save()
 	{
-		$post = $this->input->post(); //ambil data yang diinput dari form
-		//$this->product_id = uniqid(); //products_id buat menjadi unik
-		$this->nama_product = $post["nama_product"]; //isi field name
+		$post = $this->input->post(); 
+		//$this->product_id = uniqid(); 
+		$this->nama_product = $post["nama_product"]; 
 		$this->harga_product = $post["harga_product"];
 		$this->brand_product = $post["brand_product"];
 		$this->minimal_beli = $post["minimal_beli"];
@@ -81,7 +76,7 @@ class Mproduct extends CI_Model
 		$this->berat_product = $post["berat_product"];
 		$this->foto_product = $this->_uploadImage();
 		$this->deskripsi_product = $post["deskripsi_product"];
-		$this->db->insert($this->_table, $this); //simpan ke database. $this yang terakhir adalah mengacu pada data yang akan disimpan ini
+		$this->db->insert($this->_table, $this); 
 	}
 
 	public function update()
