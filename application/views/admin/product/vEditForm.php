@@ -15,7 +15,6 @@
 		</div>
 		<div class="card-body">
 
-
 		<!-- Form Input Data -->
 			<form action="<?php base_url('admin/product/edit') ?>" method="post" enctype="multipart/form-data" >
 				

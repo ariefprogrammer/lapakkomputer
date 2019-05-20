@@ -1,7 +1,7 @@
 <?php $this->load->view("admin/_partials/atas.php") ?>
 
 <!-- Judul Halaman -->
-<h2 class="text-center">Tambah Pelanggan</h2>
+<h2 class="text-center">Halaman Transaksi</h2>
 
 	<?php if ($this->session->flashdata('success')): ?>
 	<div class="alert alert-success" role="alert">

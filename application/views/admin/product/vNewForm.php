@@ -87,7 +87,7 @@
 				 type="text" name="kondisi_id" min="0" placeholder="Baru / Bekas" />
 				<div class="invalid-feedback">
 					<?php echo form_error('kondisi') ?>
-				</div> -->
+				</div> --> 
 			</div>
 
 			<div class="form-group">

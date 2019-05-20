@@ -92,11 +92,11 @@ class Mproduct extends CI_Model
 		$this->kondisi_id = $post["kondisi_id"];
 		$this->berat_product = $post["berat_product"];
 
-		if (!empty($_FILES["image"]["name"])) {
-			$this->foto_product = $this->_uploadImage();
-		}else{
-			$this->image = $post["old_image"];
-		}
+		 if (!empty($_FILES["image"]["name"])) {
+		 	$this->foto_product = $this->_uploadImage();
+		 }else{
+		 	$this->image = $post["old_image"];
+		 }
 
 		$this->deskripsi_product = $post["deskripsi_product"];
 		$this->db->update($this->_table, $this, array('product_id' => $post['id']));
@@ -112,7 +112,7 @@ class Mproduct extends CI_Model
 	{
 		$config['upload_path'] = './upload/product/';
 		$config['allowed_types'] = 'gif|jpg|png';
-		$config['file_name'] = $this->product_id;
+		$config['file_name'] = $this->nama_product;
 		$config['overwrite'] = true;
 		$config['max_size'] = 1024; //1 MB
 
