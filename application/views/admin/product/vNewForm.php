@@ -14,9 +14,9 @@
 		<div class="card-header">
 			<a href="<?php echo site_url('admin/products/') ?>"><i class="fas fa-arrow-left"></i> Back</a>
 		</div>
-		<div class="card-body">
- 
 
+		
+		<div class="card-body">
 		<!-- Form Input Data -->
 		<form action="<?php base_url('admin/product/add') ?>" method="post" enctype="multipart/form-data" >
 			<div class="form-group">

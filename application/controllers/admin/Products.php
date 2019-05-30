@@ -62,7 +62,7 @@ class Products extends CI_Controller
 
 		$this->load->view("admin/product/vEditForm", $data); //menampilkan form edit
 
-	}
+	} 
 
 	public function delete($id=null)
 	{

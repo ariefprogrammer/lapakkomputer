@@ -8,12 +8,22 @@
         </a>
       </li>
 
+      <li class="nav-item header">
+        <span>test</span>
+      </li>
+
+
+
+
+
+
+
 
       <li class="nav-item <?php echo $this->uri->segment(2)== 'transaksis'? 'active': ''?>">
         <a class="nav-link" href="<?php echo site_url('admin/transaksis');?>">
           <i class="fas fa-fw fa-archive"></i>
           <span>Transaksi</span></a>
-      </li>
+      </li> 
 
       <li class="nav-item <?php echo $this->uri->segment(2)== 'pembelians'? 'active': ''?>">
         <a class="nav-link" href="<?php echo site_url('admin/pembelians');?>">

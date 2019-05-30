@@ -33,7 +33,7 @@ class Mpelanggan extends CI_Model
 
 		];
 	}
-
+ 
 	public function save()
 	{
 		$post = $this->input->post(); //ambil data yang diinput dari form

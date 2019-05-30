@@ -37,7 +37,7 @@
 					<?php
 						echo '<option value="" disabled selected>--Pilih Produk--</option>';
 						foreach ($dd_products as $row) {
-							echo '<option value="'.$row->product_id.'" data-harga_product="'.$row->harga_product.'">'.$row->nama_product.'</option>';
+							echo '<option value="'.$row->product_id.'">'.$row->nama_product.'</option>';
 						}
 					?>
 				</select>

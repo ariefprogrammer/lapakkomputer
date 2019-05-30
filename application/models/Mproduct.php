@@ -104,7 +104,7 @@ class Mproduct extends CI_Model
 
 	public function delete($id)
 	{
-		$this->_deleteImage($id);
+		$this->_deleteImage($id); 
 		return $this->db->delete("products", array("product_id" => $id));
 	}
 

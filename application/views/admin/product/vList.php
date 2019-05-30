@@ -45,7 +45,6 @@
             <a onclick="deleteConfirm('<?php echo site_url('admin/products/delete/'.$product->product_id) ?>')"
              href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i></a>
           </td>
-
         </tr>
         <?php endforeach; ?>
       </tbody>

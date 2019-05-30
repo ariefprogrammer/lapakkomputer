@@ -16,7 +16,7 @@
 		</div>
 	<div class="card-body">
 
-
+ 
 	<!-- Form Input Data -->
 	<form action="<?php base_url('admin/pelanggans/add') ?>" method="post" enctype="multipart/form-data" >
 
