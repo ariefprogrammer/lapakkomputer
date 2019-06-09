@@ -31,12 +31,13 @@ class Mpembelian extends CI_Model
 	public function getAll()
 	{
 		
-		$this->db->select('pembelian.*, products.*, pelanggan.*');
+		//return $this->db->get("pembelian")->result();
+		$this->db->select('*');
 		$this->db->from('pembelian');
-		$this->db->join('products', 'pembelian.product_id=products.product_id');
-		$this->db->join('pelanggan', 'pembelian.pelanggan_id=pelanggan.pelanggan_id');
-		$query = $this->db->get();
-		return $query->result();
+		$this->db->join('products', 'products.product_id=pembelian.product_id', 'LEFT');
+		$this->db->join('pelanggan', 'pelanggan.pelanggan_id=pembelian.pelanggan_id', 'LEFT');
+		//$query = $this->db->get();
+		return $this->db->get()->result();
 	}
 
 

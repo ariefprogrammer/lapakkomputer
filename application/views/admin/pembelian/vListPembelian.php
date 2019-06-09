@@ -1,5 +1,7 @@
 <?php $this->load->view("admin/_partials/atas.php") ?>
 
+<?php var_dump($pembelians)?>
+
 <!-- Judul Halaman -->
 <h2 class="text-center">Daftar Pembelian</h2>
 

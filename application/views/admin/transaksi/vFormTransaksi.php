@@ -18,14 +18,14 @@
 
 
 		<!-- Form Input Data -->
-		<form action="<?php base_url('admin/transaksis/add') ?>" method="post" enctype="multipart/form-data" >
+		<form method="post" enctype="multipart/form-data" >
 			<div class="form-group">
 				<label for="pelanggan_id">Pelanggan*</label>
 				<select class="form-control" name="pelanggan_id">
 					<?php
 						echo '<option value="" disabled selected>--Pilih Pelanggan--</option>';
-						foreach ($dd_pelanggan as $row) {
-						echo '<option value="'.$row->pelanggan_id.'">'.$row->nama_store.'</option>';
+						foreach ($dd_pelanggans as $a) {
+						echo '<option value="'.$a->pelanggan_id.'">'.$a->nama_store.'</option>';
 							}
 						?>
 				</select>
@@ -36,8 +36,8 @@
 				<select class="form-control" id="product_id" name="product_id">
 					<?php
 						echo '<option value="" disabled selected>--Pilih Produk--</option>';
-						foreach ($dd_products as $row) {
-							echo '<option value="'.$row->product_id.'">'.$row->nama_product.'</option>';
+						foreach ($dd_products as $b) {
+							echo '<option value="'.$b->product_id.'">'.$b->nama_product.'</option>';
 						}
 					?>
 				</select>
@@ -61,7 +61,7 @@
 				</div>
 			</div>
 
-			<input class="btn btn-success" type="submit" name="btn" value="Save" />
+			<button name="btn_add_transaksi" class="btn btn-primary">Simpan</button>
 		</form>
 
 	</div>

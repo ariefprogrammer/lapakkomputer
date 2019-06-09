@@ -16,7 +16,7 @@
 		<div class="card-body">
 
 		<!-- Form Input Data -->
-			<form action="<?php base_url('admin/product/edit') ?>" method="post" enctype="multipart/form-data" >
+			<form method="post" enctype="multipart/form-data" >
 				
 				<input type="hidden" name="id" value="<?php echo $product->product_id;?>">
 
@@ -118,7 +118,7 @@
 					</div>
 				</div>
 
-				<input class="btn btn-success" type="submit" name="btn" value="Save" />
+				<button name="btn_edit_product" class="btn btn-primary">Simpan</button>
 			</form>
 
 		</div>

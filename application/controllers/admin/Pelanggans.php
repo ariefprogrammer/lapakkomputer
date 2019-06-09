@@ -21,37 +21,25 @@ class Pelanggans extends CI_Controller
 
 	public function add()
 	{
-		$pelanggan = $this->Mpelanggan;
-		$validation = $this->form_validation;
-		$validation->set_rules($pelanggan->rules());
-
-		if ($validation->run()) { 
-			$pelanggan->save();
-			$this->session->set_flashdata('success', 'Berhasil disimpan');
+		if (isset($_POST['btn_add_pelanggan'])) {
+			$this->Mpelanggan->save($_POST);
+			redirect("admin/pelanggans");
 		}
 		$this->load->view("admin/pelanggan/vNewFormPelanggan");
 	}
 
-	public function edit($id=null)
+	public function edit($id)
 	{
-		if(!isset($id)) redirect("admin/pelanggans");
-
-		$pelanggan =$this->Mpelanggan;
-		$validation = $this->form_validation;
-		$validation->set_rules($pelanggan->rules());
-
-		if ($validation->run()) {
-			$pelanggan->update();
-			$this->session->set_flashdata('success','Data Berhasil diubah');
-			redirect(site_url("admin/pelanggans"));
+		if (isset($_POST['btn_edit_pelanggan'])) {
+			$this->Mpelanggan->update($_POST, $id);
+			redirect("admin/pelanggans");
 		}
-
-
-		$data["editPelanggan"] = $pelanggan->getById($id);
-		if(!$data["editPelanggan"]) show_404();
-
+		$data["editPelanggan"] = $this->Mpelanggan->getById($id);
 		$this->load->view("admin/pelanggan/vEditFormPelanggan", $data);
 	}
+
+
+
 
 	public function lihat($id=null)
 	{

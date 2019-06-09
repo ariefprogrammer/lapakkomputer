@@ -34,27 +34,45 @@ class Mpelanggan extends CI_Model
 		];
 	}
  
-	public function save()
+	public function save($post)
 	{
-		$post = $this->input->post(); //ambil data yang diinput dari form
-		//$this->pelanggan_id = uniqid(); //products_id buat menjadi unik
-		$this->nama_store = $post["nama_store"]; //isi field name
-		$this->alamat_store = $post["alamat_store"];
-		$this->email_store = $post["email_store"];
-		$this->telepon_store = $post["telepon_store"];
-		$this->db->insert("pelanggan", $this); //simpan ke database. $this yang terakhir adalah mengacu pada data yang akan disimpan ini
+		$nama_store = $this->db->escape($post["nama_store"]);
+		$alamat_store = $this->db->escape($post["alamat_store"]);
+		$email_store = $this->db->escape($post["email_store"]);
+		$telepon_store = $this->db->escape($post["telepon_store"]);
+		$sql = $this->db->query("INSERT INTO pelanggan VALUES (NULL, $nama_store, $alamat_store, $email_store, $telepon_store)");
+		if ($sql) {
+			return true;
+		}else{
+			return false;
+		}
+
+		// $post = $this->input->post(); //ambil data yang diinput dari form
+		// $this->nama_store = $post["nama_store"]; //isi field name
+		// $this->alamat_store = $post["alamat_store"];
+		// $this->email_store = $post["email_store"];
+		// $this->telepon_store = $post["telepon_store"];
+		// $this->db->insert("pelanggan", $this); 
 
 	}
 
-	public function update($id=null)
+	public function update($post, $id)
 	{
-		$post = $this->input->post();
-		$this->pelanggan_id = $post["id"];
-		$this->nama_store = $post["nama_store"]; //isi field name
-		$this->alamat_store = $post["alamat_store"];
-		$this->email_store = $post["email_store"];
-		$this->telepon_store = $post["telepon_store"];
-		$this->db->update("pelanggan", $this, array('pelanggan_id' => $post['id']));
+		$nama_store = $this->db->escape($post["nama_store"]);
+		$alamat_store = $this->db->escape($post["alamat_store"]);
+		$email_store = $this->db->escape($post["email_store"]);
+		$telepon_store = $this->db->escape($post["telepon_store"]);
+		$sql = $this->db->query("UPDATE pelanggan SET nama_store = $nama_store, alamat_store = $alamat_store, email_store = $email_store, telepon_store = $telepon_store WHERE pelanggan_id = " .intval($id));
+
+		return true;
+
+		// $post = $this->input->post();
+		// $this->pelanggan_id = $post["id"];
+		// $this->nama_store = $post["nama_store"]; //isi field name
+		// $this->alamat_store = $post["alamat_store"];
+		// $this->email_store = $post["email_store"];
+		// $this->telepon_store = $post["telepon_store"];
+		// $this->db->update("pelanggan", $this, array('pelanggan_id' => $post['id']));
 	}
 	public function getAll()
 	{

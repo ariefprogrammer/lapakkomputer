@@ -18,7 +18,7 @@
 
  
 	<!-- Form Input Data -->
-	<form action="<?php base_url('admin/pelanggans/add') ?>" method="post" enctype="multipart/form-data" >
+	<form method="post" class="form-horizontal" enctype="multipart/form-data" >
 
 		<div class="form-group">
 			<label for="nama_store">Nama Store*</label>
@@ -56,7 +56,7 @@
 			</div>
 		</div>
 
-		<input class="btn btn-success" type="submit" name="btn" value="Save" />
+		<button name="btn_add_pelanggan" class="btn btn-primary">Simpan</button>
 	</form>
 
 	</div>

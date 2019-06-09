@@ -14,23 +14,25 @@ class Transaksis extends CI_Controller
 
 	public function index()
 	{
-		 $data["dd_products"]= $this->Mtransaksi->dd_product();
-		 $data["dd_pelanggan"]= $this->Mtransaksi->dd_pelanggan();
-		 $this->load->view("admin/transaksi/vFormTransaksi", $data);
+		 if (isset($_POST['btn_add_transaksi'])) {
+			$this->Mtransaksi->save($_POST);
+			redirect("admin/pembelians");
+		}
+		$data["dd_products"]= $this->Mtransaksi->dd_product();
+		$data["dd_pelanggans"]= $this->Mtransaksi->dd_pelanggan();
+		$this->load->view("admin/transaksi/vFormTransaksi", $data);
+		
 	}
 
 	public function add()
 	{
-		$transaksi = $this->Mtransaksi;
-		$validation = $this->form_validation;
-		//$validation->set_rules($transaksi->rules());
-
-		if ($validation->run()) { 
-			$transaksi->save();
-			$this->session->set_flashdata('success','Berhasil disimpan');
-		}
-
-		$this->load->view("admin/transaksi/vFormTransaksi");
+		// if (isset($_POST['btn_add_transaksi'])) {
+		// 	$this->Mtransaksi->save($_POST);
+		// 	redirect("admin/pembelians");
+		// }
+		// $data["dd_products"]= $this->Mtransaksi->dd_product();
+		// $data["dd_pelanggan"]= $this->Mtransaksi->dd_pelanggan();
+		// $this->load->view("admin/transaksi/vFormTransaksi", $data);
 	}
 
 

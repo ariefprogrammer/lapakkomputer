@@ -22,22 +22,30 @@ class Mtransaksi extends CI_Model
 
 		['field' => 'jumlah_pembelian',
 		'label' => 'jumlah_pembelian',
-		'rules' => 'required'],
-
-		['field' => 'tanggal_pembelian',
-		'label' => 'tanggal_pembelian',
 		'rules' => 'required']
-		];
+	];
 	}
 
-	public function save()
+	public function save($post)
 	{
-		$post = $this->input->post();
-		$this->pelanggan_id = $post["pelanggan_id"];
-		$this->product_id = $post["product_id"];
-		$this->jumlah_pembelian = $post["jumlah_pembelian"];
-		$this->tanggal_pembelian = $post["tanggal_pembelian"];
-		$this->db->insert("transaksi", $this);
+		$pelanggan_id = $this->db->escape($post["pelanggan_id"]);
+		$product_id = $this->db->escape($post["product_id"]);
+		$jumlah_pembelian = $this->db->escape($post["jumlah_pembelian"]);
+		$tanggal_pembelian = $this->db->escape($post["tanggal_pembelian"]);
+		$sql = $this->db->query("INSERT INTO pembelian VALUES(NULL, $product_id, $pelanggan_id, $jumlah_pembelian, $tanggal_pembelian)");
+
+		if ($sql) {
+			return true;
+		} else
+		{
+			return false;
+		}
+		// $post = $this->input->post();
+		// $this->pelanggan_id = $post["pelanggan_id"];
+		// $this->product_id = $post["product_id"];
+		// $this->jumlah_pembelian = $post["jumlah_pembelian"];
+		// $this->tanggal_pembelian = $post["tanggal_pembelian"];
+		// $this->db->insert("transaksi", $this);
 
 	}
 

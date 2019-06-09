@@ -9,7 +9,7 @@
   <div class="detail-product">
     <div class="row">
       <div class="text-center">
-      <img src="<?php echo base_url('upload/product/'.$product->foto_product);?>"/>
+        <img src="<?php echo base_url('upload/product/'.$product->foto_product);?>"/>
       </div>
     </div>
 

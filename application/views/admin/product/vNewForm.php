@@ -18,7 +18,7 @@
 		
 		<div class="card-body">
 		<!-- Form Input Data -->
-		<form action="<?php base_url('admin/product/add') ?>" method="post" enctype="multipart/form-data" >
+		<form method="post" enctype="multipart/form-data" >
 			<div class="form-group">
 				<label for="name">Nama Product*</label>
 				<input class="form-control <?php echo form_error('name') ? 'is-invalid':'' ?>"
@@ -117,7 +117,7 @@
 				</div>
 			</div>
 
-			<input class="btn btn-success" type="submit" name="btn" value="Save" />
+			<button name="btn_add_product" class="btn btn-primary">Simpan</button>
 		</form>
 
 	</div>

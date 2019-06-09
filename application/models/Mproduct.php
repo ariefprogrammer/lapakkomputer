@@ -62,44 +62,83 @@ class Mproduct extends CI_Model
 		return $this->db->get_where($this->_table, ["product_id" => $id])->row();
 	} 
 
-	public function save()
+	public function save($post)
 	{
-		$post = $this->input->post(); 
-		//$this->product_id = uniqid(); 
-		$this->nama_product = $post["nama_product"]; 
-		$this->harga_product = $post["harga_product"];
-		$this->brand_product = $post["brand_product"];
-		$this->minimal_beli = $post["minimal_beli"];
-		$this->qty_product = $post["qty_product"];
-		$this->warna_tersedia = $post["warna_tersedia"];
-		$this->kondisi_id = $post["kondisi_id"];
-		$this->berat_product = $post["berat_product"];
-		$this->foto_product = $this->_uploadImage();
-		$this->deskripsi_product = $post["deskripsi_product"];
-		$this->db->insert($this->_table, $this); 
+		$nama_product = $this->db->escape($post["nama_product"]);
+		$harga_product = $this->db->escape($post["harga_product"]);
+		$brand_product = $this->db->escape($post["brand_product"]);
+		$minimal_beli = $this->db->escape($post["minimal_beli"]);
+		$qty_product = $this->db->escape($post["qty_product"]);
+		$warna_tersedia = $this->db->escape($post["warna_tersedia"]);
+		$kondisi_id = $this->db->escape($post["kondisi_id"]);
+		$berat_product = $this->db->escape($post["berat_product"]);
+		$foto_product = $this->_uploadImage();
+		$deskripsi_product = $this->db->escape($post["deskripsi_product"]);
+
+		$sql = $this->db->query("INSERT INTO products VALUES(NULL, $nama_product, $harga_product, $brand_product, $minimal_beli, $qty_product, $warna_tersedia, $kondisi_id, $berat_product, '$foto_product', $deskripsi_product)");
+
+		if ($sql) {
+			return true;
+		}else{
+			return false;
+		}
+		// $post = $this->input->post(); 
+		// //$this->product_id = uniqid(); 
+		// $this->nama_product = $post["nama_product"]; 
+		// $this->harga_product = $post["harga_product"];
+		// $this->brand_product = $post["brand_product"];
+		// $this->minimal_beli = $post["minimal_beli"];
+		// $this->qty_product = $post["qty_product"];
+		// $this->warna_tersedia = $post["warna_tersedia"];
+		// $this->kondisi_id = $post["kondisi_id"];
+		// $this->berat_product = $post["berat_product"];
+		// $this->foto_product = $this->_uploadImage();
+		// $this->deskripsi_product = $post["deskripsi_product"];
+		// $this->db->insert($this->_table, $this); 
 	}
 
-	public function update()
+	public function update($post, $id)
 	{
-		$post = $this->input->post();
-		$this->product_id = $post["id"];
-		$this->nama_product = $post["nama_product"];
-		$this->brand_product = $post["brand_product"];
-		$this->harga_product = $post["harga_product"];
-		$this->minimal_beli = $post["minimal_beli"];
-		$this->qty_product = $post["qty_product"];
-		$this->warna_tersedia = $post["warna_tersedia"];
-		$this->kondisi_id = $post["kondisi_id"];
-		$this->berat_product = $post["berat_product"];
-
+		$nama_product = $this->db->escape($post["nama_product"]);
+		$harga_product = $this->db->escape($post["harga_product"]);
+		$brand_product = $this->db->escape($post["brand_product"]);
+		$minimal_beli = $this->db->escape($post["minimal_beli"]);
+		$qty_product = $this->db->escape($post["qty_product"]);
+		$warna_tersedia = $this->db->escape($post["warna_tersedia"]);
+		$kondisi_id = $this->db->escape($post["kondisi_id"]);
+		$berat_product = $this->db->escape($post["berat_product"]);
+		
 		 if (!empty($_FILES["image"]["name"])) {
-		 	$this->foto_product = $this->_uploadImage();
+		 	$foto_product = $this->_uploadImage();
 		 }else{
-		 	$this->image = $post["old_image"];
+		 	$foto_product = $this->db->escape($post["old_image"]); 
 		 }
 
-		$this->deskripsi_product = $post["deskripsi_product"];
-		$this->db->update($this->_table, $this, array('product_id' => $post['id']));
+		$deskripsi_product = $this->db->escape($post["deskripsi_product"]);
+
+		$sql = $this->db->query("UPDATE products SET nama_product = $nama_product, harga_product = $harga_product, brand_product = $brand_product, minimal_beli = $minimal_beli, qty_product = $qty_product, warna_tersedia = $warna_tersedia, kondisi_id = $kondisi_id, berat_product = $berat_product, foto_product = $foto_product, deskripsi_product = $deskripsi_product WHERE product_id = " .intval($id));
+		
+		return true;
+
+		// $post = $this->input->post();
+		// $this->product_id = $post["id"];
+		// $this->nama_product = $post["nama_product"];
+		// $this->brand_product = $post["brand_product"];
+		// $this->harga_product = $post["harga_product"];
+		// $this->minimal_beli = $post["minimal_beli"];
+		// $this->qty_product = $post["qty_product"];
+		// $this->warna_tersedia = $post["warna_tersedia"];
+		// $this->kondisi_id = $post["kondisi_id"];
+		// $this->berat_product = $post["berat_product"];
+
+		//  if (!empty($_FILES["image"]["name"])) {
+		//  	$this->foto_product = $this->_uploadImage();
+		//  }else{
+		//  	$this->foto_product = $post["old_image"]; 
+		//  }
+
+		// $this->deskripsi_product = $post["deskripsi_product"];
+		// $this->db->update($this->_table, $this, array('product_id' => $post['id']));
 	}
 
 	public function delete($id)
@@ -112,14 +151,14 @@ class Mproduct extends CI_Model
 	{
 		$config['upload_path'] = './upload/product/';
 		$config['allowed_types'] = 'gif|jpg|png';
-		$config['file_name'] = $this->nama_product;
+		$config['file_name'] = uniqid();
 		$config['overwrite'] = true;
 		$config['max_size'] = 1024; //1 MB
 
 		$this->load->library('upload', $config);
 
 		if ($this->upload->do_upload('image')) {
-			return $this->upload->data("file_name");
+			return $this->upload->data('file_name');
 		}
 
 		return "default.png";

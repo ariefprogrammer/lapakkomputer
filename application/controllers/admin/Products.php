@@ -20,13 +20,9 @@ class Products extends CI_Controller
 
 	public function add()
 	{
-		$product = $this->Mproduct;
-		$validation = $this->form_validation;
-		$validation->set_rules($product->rules());
-
-		if ($validation->run()) { 
-			$product->save();
-			$this->session->set_flashdata('success','Berhasil disimpan');
+		if (isset($_POST['btn_add_product'])) {
+			$this->Mproduct->save($_POST);
+			redirect("admin/products");
 		}
 
 		$this->load->view("admin/product/vNewForm");
@@ -43,23 +39,14 @@ class Products extends CI_Controller
 		$this->load->view("admin/product/vLihatProduct", $data);
 	}
 
-	public function edit($id=null)
+	public function edit($id)
 	{
-		if (!isset($id)) redirect('admin/products');
-
-		$product = $this->Mproduct;
-		$validation = $this->form_validation;
-		$validation->set_rules($product->rules());
-
-		if ($validation->run()) { //melakukan validasi
-			$product->update(); //jika berhasil, lakukan update
-			$this->session->set_flashdata('success', 'Berhasil mengedit data');
-			redirect(site_url('admin/products'));
+		if (isset($_POST['btn_edit_product'])) {
+			$this->Mproduct->update($_POST, $id);
+			redirect("admin/products");
 		}
 
-		$data["product"] = $product->getById($id); //mengambil data untuk ditampilkan pada form
-		if(!$data["product"]) show_404(); // jika tidak ada data, tampilkan error 404
-
+		$data["product"] = $this->Mproduct->getById($id); //mengambil data untuk ditampilkan pada form
 		$this->load->view("admin/product/vEditForm", $data); //menampilkan form edit
 
 	} 
