@@ -78,8 +78,8 @@
 					<label for="price">Kondisi produkk*</label>
 						<select name="kondisi_id" class="form-control">
 							<option value="">--Pilih Kondisi--</option>
-							<option value="1" <?php if($product->kondisi_id == 1) echo "selected";?> >Baru</option>
-							<option value="2" <?php if($product->kondisi_id == 2) echo "selected";?> >Bekas</option>
+							<option value="1" <?php if($product['kondisi_id'] == 1) echo "selected";?> >Baru</option>
+							<option value="2" <?php if($product['kondisi_id'] == 2) echo "selected";?> >Bekas</option>
 							
 						</select>
 
