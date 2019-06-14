@@ -34,8 +34,8 @@
               <td><?php echo $pelanggan->telepon_store ?></td>
 
               <td width="180" class="text-center">
-                <a href="<?php echo site_url('admin/pelanggans/lihat/'.$pelanggan->pelanggan_id) ?>"
-                  class="btn btn-small"><i class="fas fa-eye"></i></a>
+                <!-- <a href="<?php echo site_url('admin/pelanggans/lihat/'.$pelanggan->pelanggan_id) ?>"
+                  class="btn btn-small"><i class="fas fa-eye"></i></a> -->
                 <a href="<?php echo site_url('admin/pelanggans/edit/'.$pelanggan->pelanggan_id) ?>"
                   class="btn btn-small"><i class="fas fa-edit"></i></a>
                 <a onclick="deleteConfirm('<?php echo site_url('admin/pelanggans/delete/'.$pelanggan->pelanggan_id) ?>')"

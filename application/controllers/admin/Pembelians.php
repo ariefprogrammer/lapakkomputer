@@ -28,4 +28,18 @@ class Pembelians extends CI_Controller
 
 		$this->load->view("admin/pembelian/vLihatPembelian", $data);
 	}
+
+	public function edit($id)
+	{
+		//$data["edit"] = $this->Mpembelian->;
+		//$this->load->view("admin/pembelian/vEditPembelian", $data);
+	}
+
+	public function delete($id=null)
+	{
+		if ($this->Mpembelian->delete($id)) //hapus data sesuai fungsi pada Product_model dan id
+		{
+			redirect(site_url('admin/pembelians')); //jika berhasil, redirect ke halaman ini
+		}
+	}
 }

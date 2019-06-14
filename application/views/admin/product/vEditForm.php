@@ -18,12 +18,12 @@
 		<!-- Form Input Data -->
 			<form method="post" enctype="multipart/form-data" >
 				
-				<input type="hidden" name="id" value="<?php echo $product->product_id;?>">
+				<input type="hidden" name="id" value="<?php echo $product['product_id'];?>">
 
 				<div class="form-group">
 					<label for="name">Nama Product*</label>
 					<input class="form-control <?php echo form_error('name') ? 'is-invalid':'' ?>"
-					 type="text" name="nama_product" placeholder="Product name" value="<?php echo $product->nama_product;?>"/>
+					 type="text" name="nama_product" placeholder="Product name" value="<?php echo $product['nama_product'];?>"/>
 					<div class="invalid-feedback">
 						<?php echo form_error('name') ?>
 					</div>
@@ -32,7 +32,7 @@
 				<div class="form-group">
 					<label for="name">Brand Name*</label>
 					<input class="form-control <?php echo form_error('name') ? 'is-invalid':'' ?>"
-					 type="text" name="brand_product" value="<?php echo $product->brand_product;?>" />
+					 type="text" name="brand_product" value="<?php echo $product['brand_product'];?>" />
 					<div class="invalid-feedback">
 						<?php echo form_error('name') ?>
 					</div>
@@ -41,7 +41,7 @@
 				<div class="form-group">
 					<label for="price">Harga Product*</label>
 					<input class="form-control <?php echo form_error('price') ? 'is-invalid':'' ?>"
-					 type="number" name="harga_product" min="0" placeholder="Harga barang" value="<?php echo $product->harga_product;?>" />
+					 type="number" name="harga_product" min="0" placeholder="Harga barang" value="<?php echo $product['harga_product'];?>" />
 					<div class="invalid-feedback">
 						<?php echo form_error('price') ?>
 					</div>
@@ -50,7 +50,7 @@
 				<div class="form-group">
 					<label for="price">Minimal Beli</label>
 					<input class="form-control <?php echo form_error('minimal') ? 'is-invalid':'' ?>"
-					 type="number" name="minimal_beli" min="0" placeholder="Minimal Beli" value="<?php echo $product->minimal_beli;?>"/>
+					 type="number" name="minimal_beli" min="0" placeholder="Minimal Beli" value="<?php echo $product['minimal_beli'];?>"/>
 					<div class="invalid-feedback">
 						<?php echo form_error('minimal') ?>
 					</div>
@@ -59,7 +59,7 @@
 				<div class="form-group">
 					<label for="price">Stok Produk (Qty)</label>
 					<input class="form-control <?php echo form_error('qty_product') ? 'is-invalid':'' ?>"
-					 type="number" name="qty_product" min="0" placeholder="Stok Produk" value="<?php echo $product->qty_product;?>"/>
+					 type="number" name="qty_product" min="0" placeholder="Stok Produk" value="<?php echo $product['qty_product'];?>"/>
 					<div class="invalid-feedback">
 						<?php echo form_error('qty_product') ?>
 					</div>
@@ -68,7 +68,7 @@
 				<div class="form-group">
 					<label for="price">Warna tersedia*</label>
 					<input class="form-control <?php echo form_error('warna') ? 'is-invalid':'' ?>"
-					 type="text" name="warna_tersedia" min="0" placeholder="Warna yang tersedia" value="<?php echo $product->warna_tersedia;?>"/>
+					 type="text" name="warna_tersedia" min="0" placeholder="Warna yang tersedia" value="<?php echo $product['warna_tersedia'];?>"/>
 					<div class="invalid-feedback">
 						<?php echo form_error('warna') ?>
 					</div>
@@ -93,7 +93,7 @@
 				<div class="form-group">
 					<label for="price">Berat Produk</label>
 					<input class="form-control <?php echo form_error('berat') ? 'is-invalid':'' ?>"
-					 type="number" name="berat_product" min="0" placeholder="Berat Produk (Gr)" value="<?php echo $product->berat_product;?>"/>
+					 type="number" name="berat_product" min="0" placeholder="Berat Produk (Gr)" value="<?php echo $product['berat_product'];?>"/>
 					<div class="invalid-feedback">
 						<?php echo form_error('berat') ?>
 					</div>
@@ -103,7 +103,7 @@
 					<label for="name">Photo</label>
 					<input class="form-control-file <?php echo form_error('image') ? 'is-invalid':'' ?>"
 					 type="file" name="image" />
-					 <input type="hidden" name="old_image" value="<?php echo $product->foto_product;?>"/>
+					 <input type="hidden" name="old_image" value="<?php echo $product['foto_product'];?>"/>
 					<div class="invalid-feedback">
 						<?php echo form_error('image') ?>
 					</div>
@@ -112,7 +112,7 @@
 				<div class="form-group">
 					<label for="name">Deskripsi Produk*</label>
 					<textarea class="form-control <?php echo form_error('description') ? 'is-invalid':'' ?>"
-					 name="deskripsi_product" placeholder="Product description..."><?php echo $product->deskripsi_product;?></textarea>
+					 name="deskripsi_product" placeholder="Product description..."><?php echo $product['deskripsi_product'];?></textarea>
 					<div class="invalid-feedback">
 						<?php echo form_error('description') ?>
 					</div>

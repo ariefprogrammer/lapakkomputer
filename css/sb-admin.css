@@ -10894,6 +10894,7 @@ footer.sticky-footer {
 
 footer.sticky-footer .copyright {
   line-height: 1;
+  padding-top: 30px;
   font-size: 0.8rem;
 }
 

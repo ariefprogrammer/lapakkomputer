@@ -1,7 +1,5 @@
 <?php $this->load->view("admin/_partials/atas.php") ?>
 
-<?php var_dump($pembelians)?>
-
 <!-- Judul Halaman -->
 <h2 class="text-center">Daftar Pembelian</h2>
 
@@ -35,8 +33,6 @@
             <td width="180" class="text-center">
             <a href="<?php echo site_url('admin/pembelians/lihat/'.$pembelian->pembelian_id) ?>"
                class="btn btn-small"><i class="fas fa-eye"></i></a>
-              <a href="<?php echo site_url('admin/pembelians/edit/'.$pembelian->pembelian_id) ?>"
-               class="btn btn-small"><i class="fas fa-edit"></i></a>
               <a onclick="deleteConfirm('<?php echo site_url('admin/pembelians/delete/'.$pembelian->pembelian_id) ?>')"
                href="#" class="btn btn-small text-danger"><i class="fas fa-trash"></i></a>
             </td>

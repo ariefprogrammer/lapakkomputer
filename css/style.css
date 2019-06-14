@@ -4,7 +4,23 @@
 }
 
 .detail-product img{
-	width: 250px;
-	
-	padding-bottom: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 350px;
+  margin-top: 10px;
+  
+}
+
+.line-height{
+  line-height: 1.5;
+}
+
+.wallpaper img{
+	display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+	width: 400px;
+	padding-top: 25px;
+	padding-bottom: 25px;
 }

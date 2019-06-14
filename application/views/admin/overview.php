@@ -1,12 +1,16 @@
 <?php $this->load->view("admin/_partials/atas.php") ?>
 
+<div class="row wallpaper">
+    <img src="<?php echo base_url('upload/product/wallpaper.jpg')?>">
+</div>
+
 <!-- Icon Cards-->
-<div class="row">
-  <div class="col-xl-3 col-sm-6 mb-3">
+<div class="row text-center">
+  <div class="col-md-4 col-sm-6 mb-3">
     <div class="card text-white bg-primary o-hidden h-100">
       <div class="card-body">
         <div class="card-body-icon">
-          <i class="fas fa-fw fa-comments"></i>
+          <i class="fas fa-fw fa-box-open"></i>
         </div>
         <div class="mr-5"><?php echo $jumlahproduk;?> Data Produk</div>
       </div>
@@ -18,11 +22,11 @@
       </a>
     </div>
   </div>
-  <div class="col-xl-3 col-sm-6 mb-3">
+  <div class="col-md-4 col-sm-6 mb-3">
     <div class="card text-white bg-warning o-hidden h-100">
       <div class="card-body">
         <div class="card-body-icon">
-          <i class="fas fa-fw fa-list"></i>
+          <i class="fas fa-fw fa-user"></i>
         </div>
         <div class="mr-5"><?php echo $jumlahpelanggan;?> Data Pelanggan</div>
       </div>
@@ -34,7 +38,7 @@
       </a>
     </div>
   </div>
-  <div class="col-xl-3 col-sm-6 mb-3">
+  <div class="col-md-4 col-sm-6 mb-3">
     <div class="card text-white bg-success o-hidden h-100">
       <div class="card-body">
         <div class="card-body-icon">
@@ -71,7 +75,7 @@
 </div>
 
 <!-- Area Chart Example-->
-<div class="card mb-3">
+<!-- <div class="card mb-3">
   <div class="card-header">
     <i class="fas fa-chart-area"></i>
     Performa Penjualan</div>
@@ -79,7 +83,7 @@
     <canvas id="myAreaChart" width="100%" height="30"></canvas>
   </div>
   <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-</div>
+</div> -->
 
 
 <script type="text/javascript">

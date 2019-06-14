@@ -59,7 +59,12 @@ class Mproduct extends CI_Model
 
 	public function getById($id)
 	{
-		return $this->db->get_where($this->_table, ["product_id" => $id])->row();
+		$this->db->select('products.*, kondisi_products.*');
+		$this->db->from('products');
+		$this->db->join('kondisi_products', 'kondisi_products.kondisi_id = products.kondisi_id','LEFT');
+		$this->db->where('products.product_id', $id);
+		return $this->db->get()->row_array();
+		//return $this->db->get_where($this->_table, ["product_id" => $id])->row();
 	} 
 
 	public function save($post)
@@ -70,7 +75,7 @@ class Mproduct extends CI_Model
 		$minimal_beli = $this->db->escape($post["minimal_beli"]);
 		$qty_product = $this->db->escape($post["qty_product"]);
 		$warna_tersedia = $this->db->escape($post["warna_tersedia"]);
-		$kondisi_id = $this->db->escape($post["kondisi_id"]);
+		$kondisi_id = $this->db->escape($post["nama_kondisi"]);
 		$berat_product = $this->db->escape($post["berat_product"]);
 		$foto_product = $this->_uploadImage();
 		$deskripsi_product = $this->db->escape($post["deskripsi_product"]);

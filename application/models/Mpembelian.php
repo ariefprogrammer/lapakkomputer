@@ -43,10 +43,11 @@ class Mpembelian extends CI_Model
 
 	public function getById($id)
 	{
-		$this->db->select('pembelian.*, products.*, pelanggan.*');
+		$this->db->select('pembelian.*, products.*, pelanggan.*, kondisi_products.*');
 		$this->db->from('pembelian');
 		$this->db->join('products', 'pembelian.product_id=products.product_id');
 		$this->db->join('pelanggan', 'pembelian.pelanggan_id=pelanggan.pelanggan_id');
+		$this->db->join('kondisi_products', 'products.kondisi_id=kondisi_products.kondisi_id');
 		$this->db->where('pembelian.pembelian_id', $id);
 		return $this->db->get()->row_array();
 
@@ -54,4 +55,32 @@ class Mpembelian extends CI_Model
 		// fungsi ini sama seperti SELECT * FROM products WHERE id_product=$id
 		// funsi row() akan mengambil satu baris data dari hasil query
 	} 
+
+	public function delete($id)
+	{
+		$this->_deleteImage($id); 
+		return $this->db->delete("pembelian", array("pembelian_id" => $id));
+	}
+
+	private function _deleteImage($id)
+	{
+		$product = $this->getById($id);
+		
+		if ($product->foto_product != "default.png") {
+				$file_name = explode(".", $product->foto_product[0]);
+				return array_map('unlink', glob(FCPATH."upload/product/$file_name.*"));
+			
+				// Di sana kita mengambil nama file dengan fungsi exlode(). 
+				// Lalu kita cari file berdasarkan nama tersbut dengan fungsi glob() 
+				// Setelah file-file ditemukan, lalu kita gunakan fungsi array_map() 
+				// untuk mengeksekusi fungsi unlink() pada tiap file yang ditemukan. 
+				// Tanda bitang (*) setelah $filename artinya semua ektensi dipilih.
+
+			}	
+	}
+
+	public function update($post, $id)
+	{
+
+	}
 }
