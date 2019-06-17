@@ -75,12 +75,12 @@ class Mproduct extends CI_Model
 		$minimal_beli = $this->db->escape($post["minimal_beli"]);
 		$qty_product = $this->db->escape($post["qty_product"]);
 		$warna_tersedia = $this->db->escape($post["warna_tersedia"]);
-		$kondisi_id = $this->db->escape($post["nama_kondisi"]);
+		$kondisi_id = $this->db->escape($post["kondisi_id"]);
 		$berat_product = $this->db->escape($post["berat_product"]);
 		$foto_product = $this->_uploadImage();
 		$deskripsi_product = $this->db->escape($post["deskripsi_product"]);
 
-		$sql = $this->db->query("INSERT INTO products VALUES(NULL, $nama_product, $harga_product, $brand_product, $minimal_beli, $qty_product, $warna_tersedia, $kondisi_id, $berat_product, '$foto_product', $deskripsi_product)");
+		$sql = $this->db->query("INSERT INTO products VALUES(NULL, $nama_product, $brand_product, $harga_product,  $minimal_beli, $qty_product, $warna_tersedia, $kondisi_id, $berat_product, '$foto_product', $deskripsi_product)");
 
 		if ($sql) {
 			return true;
@@ -121,7 +121,7 @@ class Mproduct extends CI_Model
 
 		$deskripsi_product = $this->db->escape($post["deskripsi_product"]);
 
-		$sql = $this->db->query("UPDATE products SET nama_product = $nama_product, harga_product = $harga_product, brand_product = $brand_product, minimal_beli = $minimal_beli, qty_product = $qty_product, warna_tersedia = $warna_tersedia, kondisi_id = $kondisi_id, berat_product = $berat_product, foto_product = $foto_product, deskripsi_product = $deskripsi_product WHERE product_id = " .intval($id));
+		$sql = $this->db->query("UPDATE products SET nama_product = $nama_product, harga_product = $harga_product, brand_product = $brand_product, minimal_beli = $minimal_beli, qty_product = $qty_product, warna_tersedia = $warna_tersedia, kondisi_id = $kondisi_id, berat_product = $berat_product, foto_product = '$foto_product', deskripsi_product = $deskripsi_product WHERE product_id = " .intval($id));
 		
 		return true;
 
@@ -173,8 +173,8 @@ class Mproduct extends CI_Model
 	{
 		$product = $this->getById($id);
 		
-		if ($product->foto_product != "default.png") {
-				$file_name = explode(".", $product->foto_product[0]);
+		if ($product['foto_product'] != "default.png") {
+				$file_name = explode(".", $product['foto_product'][0]);
 				return array_map('unlink', glob(FCPATH."upload/product/$file_name.*"));
 			
 				// Di sana kita mengambil nama file dengan fungsi exlode(). 
