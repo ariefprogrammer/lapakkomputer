@@ -1,10 +1,1 @@
-![Halaman Overview] (https://github.com/ariefhdt/lapakkomputer/tree/master/screenshot/1.png)
-![Halaman Transaksi] (https://github.com/ariefhdt/lapakkomputer/tree/master/screenshot/2.png)
-![Halaman Daftar Pembelian] (https://github.com/ariefhdt/lapakkomputer/tree/master/screenshot/3.png)
-![Halaman Detail pembelian] (https://github.com/ariefhdt/lapakkomputer/tree/master/screenshot/4.png)
-![Halaman Tambah Produk] (https://github.com/ariefhdt/lapakkomputer/tree/master/screenshot/5.png)
-![Halaman Daftar Produk] (https://github.com/ariefhdt/lapakkomputer/tree/master/screenshot/6.png)
-![Halaman Detail Produk] (https://github.com/ariefhdt/lapakkomputer/tree/master/screenshot/7.png)
-![Halaman Tambah Pelanggan] (https://github.com/ariefhdt/lapakkomputer/tree/master/screenshot/8.png)
-![Halaman Daftar Pelanggan] (https://github.com/ariefhdt/lapakkomputer/tree/master/screenshot/9.png)
-![Halaman Edit Pelanggan] (https://github.com/ariefhdt/lapakkomputer/tree/master/screenshot/10.png)
+Lapakkomputer merupakan sebuah sistem back-end yang dirancang untuk toko distributor komputer dalam mengelola penjualan kepada para pelanggan secara grosir. Sistem ini dibangun menggunakan framework Codeigniter. Untuk kebutuhan demo silahkan klik tautan disamping -> http://bit.ly/lapakkomputer
