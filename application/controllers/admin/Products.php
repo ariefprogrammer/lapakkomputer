@@ -9,13 +9,21 @@ class Products extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model("Mproduct");
+		$this->load->model("Users_model");
 		$this->load->library('form_validation');
 	}
 
 	public function index()
 	{
-		 $data["products"] = $this->Mproduct->getAll();
-		 $this->load->view("admin/product/vList", $data);
+		if ($this->session->userdata('isloggedin')) {
+			
+			$data['udata']=$this->Users_model->fetch_data(array('id'=>$this->session->userdata('loguserid')));
+			$data["products"] = $this->Mproduct->getAll();
+			$this->load->view("admin/product/vList", $data);
+		}
+		else{
+			redirect('admin/users/login');
+		}		 
 	}
 
 	public function add()

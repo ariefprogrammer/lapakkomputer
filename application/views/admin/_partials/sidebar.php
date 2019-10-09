@@ -42,8 +42,8 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="<?php echo site_url('admin/users/logout')?>">
           <i class="fas fa-fw fa-cog"></i>
-          <span>Settings</span></a>
+          <span>Logout</span></a>
       </li>
     </ul>

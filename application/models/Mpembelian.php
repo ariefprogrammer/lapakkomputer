@@ -49,7 +49,7 @@ class Mpembelian extends CI_Model
 		$this->db->join('pelanggan', 'pembelian.pelanggan_id=pelanggan.pelanggan_id');
 		$this->db->join('kondisi_products', 'products.kondisi_id=kondisi_products.kondisi_id');
 		$this->db->where('pembelian.pembelian_id', $id);
-		return $this->db->get()->row_array();
+		return $this->db->get()->row_array(); 
 
 		// return $this->db->get_where("pembelian", ["pembelian_id" => $id])->row();
 		// fungsi ini sama seperti SELECT * FROM products WHERE id_product=$id

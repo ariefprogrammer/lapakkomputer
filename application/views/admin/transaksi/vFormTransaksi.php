@@ -3,11 +3,16 @@
 <!-- Judul Halaman -->
 <h2 class="text-center">Halaman Transaksi</h2>
 
-	<?php if ($this->session->flashdata('success')): ?>
-	<div class="alert alert-success" role="alert">
-		<?php echo $this->session->flashdata('success'); ?>
-	</div>
-	<?php endif; ?>
+	<?php
+	if (isset($lastCode->kode_transaksi)) {
+		$oldCode = intval($lastCode->kode_transaksi);
+		$newCode = $oldCode + 0001;
+	}else
+	{
+		$newCode = 1001;
+	}
+		
+	?>
 
 		<div class="card mb-3">
 			<div class="card-header">
@@ -19,6 +24,12 @@
 
 		<!-- Form Input Data -->
 		<form method="post" enctype="multipart/form-data" >
+			
+			<div class="form-group">
+				<label>Code</label>
+				<input class="form-control" type="text"  name="code" value="<?php echo $newCode?>" disabled>
+			</div>
+
 			<div class="form-group">
 				<label for="pelanggan_id">Pelanggan*</label>
 				<select class="form-control" name="pelanggan_id">

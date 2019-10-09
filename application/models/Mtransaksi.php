@@ -29,10 +29,11 @@ class Mtransaksi extends CI_Model
 	public function save($post)
 	{
 		$pelanggan_id = $this->db->escape($post["pelanggan_id"]);
+		$kode_transaksi = $this->db->escape($post["code"]);
 		$product_id = $this->db->escape($post["product_id"]);
 		$jumlah_pembelian = $this->db->escape($post["jumlah_pembelian"]);
 		$tanggal_pembelian = $this->db->escape($post["tanggal_pembelian"]);
-		$sql = $this->db->query("INSERT INTO pembelian VALUES(NULL, $product_id, $pelanggan_id, $jumlah_pembelian, $tanggal_pembelian)");
+		$sql = $this->db->query("INSERT INTO pembelian VALUES(NULL, $kode_transaksi, $product_id, $pelanggan_id, $jumlah_pembelian, $tanggal_pembelian)");
 
 		if ($sql) {
 			return true;
@@ -49,13 +50,32 @@ class Mtransaksi extends CI_Model
 
 	}
 
-	function dd_pelanggan()
+	public function dd_pelanggan()
 	{
 		return $this->db->get("pelanggan")->result();
 	}
 
-	function dd_product()
+	public function dd_product()
 	{
 		return $this->db->get("products")->result();
 	}
+
+	public function getLastCode()
+	{
+		$sql = $this->db->query("SELECT kode_transaksi FROM pembelian ORDER BY pembelian_id DESC LIMIT 1");
+		return $sql->row();
+	}
+
+	public function nota($kode_transaksi)
+	{
+		$this->db->select('pembelian.*, products.*, pelanggan.*, kondisi_products.*');
+		$this->db->from('pembelian');
+		$this->db->join('products', 'pembelian.product_id=products.product_id');
+		$this->db->join('pelanggan', 'pembelian.pelanggan_id=pelanggan.pelanggan_id');
+		$this->db->join('kondisi_products', 'products.kondisi_id=kondisi_products.kondisi_id');
+		$this->db->where('pembelian.kode_transaksi', $kode_transaksi);
+		return $this->db->get()->row_array();
+	}
+
+
 }

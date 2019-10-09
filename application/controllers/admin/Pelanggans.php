@@ -10,13 +10,21 @@ class Pelanggans extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model("Mpelanggan");
+		$this->load->model("Users_model");
 		$this->load->library('form_validation');
 	}
 
 	public function index()
 	{
-		$data["pelanggan"] = $this->Mpelanggan->getAll();
-		$this->load->view("admin/pelanggan/vListPelanggan", $data);
+		if ($this->session->userdata('isloggedin')) {
+			# code...
+			$data['udata']=$this->Users_model->fetch_data(array('id'=>$this->session->userdata('loguserid')));
+			$data["pelanggan"] = $this->Mpelanggan->getAll();
+			$this->load->view("admin/pelanggan/vListPelanggan", $data);
+		}
+		else{
+			redirect('admin/users/login');
+		}
 	}
 
 	public function add()
